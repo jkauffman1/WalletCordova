@@ -2,8 +2,6 @@
 
 set -e
 
-# Prevent cordova prompting us to opt-in to telemetry on first use
-cordova telemetry off >/dev/null 2>&1
 
 WEBFILES_REPO="https://github.com/greenaddress/GreenAddressWebFiles.git"
 WEBFILES_BRANCH=$(git symbolic-ref HEAD || echo $TRAVIS_BRANCH)
