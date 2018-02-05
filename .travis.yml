@@ -5,16 +5,16 @@ matrix:
       sudo: required
       services:
         - docker
-      script: docker run -v $PWD:/walletcordova greenaddress/android_cordova@sha256:3f267e76636f8d7cfcd04d02550236cd2aaa17c431cda7e7e7b982acd4b9146b
+      script: docker run -v $PWD:/walletcordova greenaddress/android_cordova@sha256:aab8b3a3c339beef738fbdb3f52bf8f1fd3c8f79e2f0727268adb5804c6092c5
 
     - os: osx
       osx_image: xcode8.3
-      before_script: sudo npm install -g cordova
+      before_script: sudo yarn install -g cordova
       sudo: required
       install:
         - brew update &> /dev/null
         - brew upgrade &> /dev/null
-        - brew install node swig coreutils gnu-sed automake autoconf pkg-config &> /dev/null
+        - brew install node yarn swig coreutils gnu-sed automake autoconf pkg-config &> /dev/null
         - pip2 install virtualenv
       script:
         - ./prepare.sh
