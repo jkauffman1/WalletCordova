@@ -116,5 +116,5 @@ fi
 mkdir -p plugins/cordova-plugin-wally/build/Release
 touch plugins/cordova-plugin-wally/build/Release/wallycore.js  # mock wallycore which is nodejs-only
 cd plugins/cordova-plugin-wally
-yarn install base64-js
+yarn add base64-js
 cd ../..
