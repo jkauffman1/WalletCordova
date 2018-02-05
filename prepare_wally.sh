@@ -6,7 +6,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     OSX=true
 else
     #FIXME: for osx assume installed in a pre-script or manually until we install cordova non-globally
-    yarn install -g cordova@8.0.0
+    yarn global add cordova@8.0.0
 fi
 
 # Prevent cordova prompting us to opt-in to telemetry on first use
