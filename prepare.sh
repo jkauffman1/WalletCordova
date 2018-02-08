@@ -120,19 +120,22 @@ EOF
 fi
 
 if [ \! -e webfiles ]; then
-    git clone --depth 1 https://github.com/greenaddress/GreenAddressWebFiles.git -b jswally-v0.0.6 webfiles
-    $SED -i -e "/wallyjs/d" -e "/cordova-plugin-wally/d" webfiles/package.json
-    rm -rf webfiles/package-lock.json
-    #git clone --depth 1 $WEBFILES_REPO -b $WEBFILES_BRANCH webfiles
+    git clone https://github.com/jkauffman1/GreenAddressWebFiles.git webfiles
+    cd webfiles
+    git checkout 745dc6a2b6216f2fe98a16e91ac582ed79738775
+    # FIXME: This is a horrible hack to pretend that webfiles/libwally-core
+    # doesn't exist because this build uses its own copy in ./libwally-core
+    # instead. Should really just use the one in webfiles/libwally-core and
+    # not sed the package.json or rm the lock files
+    sed -i -e "/wallyjs/d" package.json
+    rm -rf yarn.lock package-lock.json
+    cd ..
 fi
 
 # Add the wally plugin:
 if [ \! -e libwally-core ]; then
-    git clone https://github.com/ElementsProject/libwally-core -b master
-    cd libwally-core
-    git checkout 3668617a9dade1a2dc24ab55217ba2a648c8ebb1
-    patch -p1 < ../wally.patch
-    cd ..
+    git clone https://github.com/ElementsProject/libwally-core.git libwally-core
+    (cd libwally-core && git checkout 482e2da273275e99013aecf84c4f9df95f895ab3)
 fi
 # Build the wally plugin
 ./prepare_wally.sh
