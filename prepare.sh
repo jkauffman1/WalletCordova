@@ -135,7 +135,7 @@ fi
 # Add the wally plugin:
 if [ \! -e libwally-core ]; then
     git clone https://github.com/jkauffman1/libwally-core-1.git libwally-core
-    (cd libwally-core && git checkout e2e7b41a7bb632f9100521097d3c0fc7d5cbf29d)
+    (cd libwally-core && git checkout try-fix-swift-ios)
 fi
 # Build the wally plugin
 ./prepare_wally.sh
