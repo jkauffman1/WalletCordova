@@ -97,6 +97,7 @@ if [ -n "$OSX" ]; then
     cordova prepare ios
 
     PLUGINDIR=$APPDIR/libwally-core/src/wrap_js/cordovaplugin
+    sed s/HelloCordova/$APPNAME/ libwally-core/src/wrap_js/cordovaplugin/patch_pbxproj_with_wally.js > patch_pbxproj.js
     cp -r $APPDIR/libwally-core/src/* platforms/ios/$APPNAME
     cp -r $APPDIR/libwally-core/include platforms/ios/$APPNAME
     cp -r $APPDIR/libwally-core/src/secp256k1/include/* platforms/ios/$APPNAME/include/
