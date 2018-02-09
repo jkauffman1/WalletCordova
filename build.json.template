@@ -3,13 +3,15 @@
         "debug": {
             "codeSignIdentity": "iPhone Developer",
             "developmentTeam": "DEVELOPMENT_TEAM",
-            "packageType": "development"
+            "packageType": "development",
+            "buildFlag": [ "SWIFT_VERSION = 3"]
         },
         "release": {
             "codeSignIdentity": "iPhone Distribution",
             "developmentTeam": "DEVELOPMENT_TEAM",
             "provisioningProfile": "PROVISIONING_PROFILE",
-            "packageType": "app-store"
+            "packageType": "app-store",
+            "buildFlag": [ "SWIFT_VERSION = 3"]
         }
     }
 }
