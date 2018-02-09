@@ -134,8 +134,8 @@ fi
 
 # Add the wally plugin:
 if [ \! -e libwally-core ]; then
-    git clone https://github.com/ElementsProject/libwally-core.git libwally-core
-    (cd libwally-core && git checkout 482e2da273275e99013aecf84c4f9df95f895ab3)
+    git clone https://github.com/jkauffman1/libwally-core-1.git libwally-core
+    (cd libwally-core && git checkout e2e7b41a7bb632f9100521097d3c0fc7d5cbf29d)
 fi
 # Build the wally plugin
 ./prepare_wally.sh
