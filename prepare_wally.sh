@@ -93,21 +93,7 @@ cd ../..
 
 if [ -n "$OSX" ]; then
     cordova prepare ios
-    # FIXME plugin add doesn't work before prepare for iOS
-    # FIXME: What is add_swift_support.js for, and why don't we build the
-    #        swift wrapper above?
-    ADD_JS=libwally-core/src/wrap_js/cordovaplugin/scripts/add_swift_support.js
-    sed s/HelloCordova/$APPNAME/ $ADD_JS.HelloCordova >$ADD_JS
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
-    PLUGINDIR=$APPDIR/libwally-core/src/wrap_js/cordovaplugin
-    sed s/HelloCordova/$APPNAME/ libwally-core/src/wrap_js/cordovaplugin/patch_pbxproj_with_wally.js > patch_pbxproj.js
-    # FIXME: This copies too much
-    cp -r $APPDIR/libwally-core/src/* platforms/ios/$APPNAME
-    cp -r $APPDIR/libwally-core/include platforms/ios/$APPNAME
-    cp -r $APPDIR/libwally-core/src/secp256k1/include/* platforms/ios/$APPNAME/include/
-    NODE_PATH=$APPDIR/platforms/ios/cordova/node_modules node patch_pbxproj.js > pbxproj.new
-    mv pbxproj.new platforms/ios/$APPNAME.xcodeproj/project.pbxproj
-    rm -f patch_pbxproj.js
 else
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
 fi
