@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 
 WEBFILES_REPO="https://github.com/greenaddress/GreenAddressWebFiles.git"
