@@ -95,6 +95,14 @@ cd ../..
 if [ -n "$OSX" ]; then
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
     cordova prepare ios
+
+    PLUGINDIR=$APPDIR/libwally-core/src/wrap_js/cordovaplugin
+    cp -r $APPDIR/libwally-core/src/* platforms/ios/$APPNAME
+    cp -r $APPDIR/libwally-core/include platforms/ios/$APPNAME
+    cp -r $APPDIR/libwally-core/src/secp256k1/include/* platforms/ios/$APPNAME/include/
+
+    NODE_PATH=$APPDIR/platforms/ios/cordova/node_modules node patch_pbxproj.js > pbxproj.new
+    mv pbxproj.new platforms/ios/$APPNAME.xcodeproj/project.pbxproj
 else
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
 fi
