@@ -93,8 +93,8 @@ make cordova-wrappers
 cd ../..
 
 if [ -n "$OSX" ]; then
-    cordova prepare ios
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
+    cordova prepare ios
 else
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
 fi
