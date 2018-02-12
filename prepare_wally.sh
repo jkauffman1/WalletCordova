@@ -93,6 +93,9 @@ make cordova-wrappers
 cd ../..
 
 if [ -n "$OSX" ]; then
+    ADD_JS=libwally-core/src/wrap_js/cordovaplugin/scripts/add_swift_support.js
+    sed s/HelloCordova/$APPNAME/ $ADD_JS.HelloCordova >$ADD_JS
+
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
     cordova prepare ios
 
