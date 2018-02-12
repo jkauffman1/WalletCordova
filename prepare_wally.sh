@@ -93,11 +93,11 @@ make cordova-wrappers
 cd ../..
 
 if [ -n "$OSX" ]; then
+    cordova prepare ios
     ADD_JS=libwally-core/src/wrap_js/cordovaplugin/scripts/add_swift_support.js
     sed s/HelloCordova/$APPNAME/ $ADD_JS.HelloCordova >$ADD_JS
 
     cordova plugin add $APPDIR/libwally-core/src/wrap_js/cordovaplugin --nosave
-    cordova prepare ios
 
     PLUGINDIR=$APPDIR/libwally-core/src/wrap_js/cordovaplugin
     sed s/HelloCordova/$APPNAME/ libwally-core/src/wrap_js/cordovaplugin/patch_pbxproj_with_wally.js > patch_pbxproj.js
